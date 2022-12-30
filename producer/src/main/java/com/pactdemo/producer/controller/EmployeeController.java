@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class SalaryController {
+public class EmployeeController {
 
     private List<Employee> employees ;
 
-    public SalaryController(){
+    public EmployeeController(){
         employees = prepareEmployees();
     }
 
