@@ -1,0 +1,109 @@
+{
+  "consumer": {
+    "name": "DepartmentCatalogue"
+  },
+  "interactions": [
+    {
+      "description": "fetching all employee details",
+      "providerStates": [
+        {
+          "name": "employee exists"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/getAllEmployees"
+      },
+      "response": {
+        "body": [
+          {
+            "departmentId": 1,
+            "name": "string",
+            "salary": 10
+          },
+          {
+            "departmentId": 1,
+            "name": "string",
+            "salary": 10
+          },
+          {
+            "departmentId": 1,
+            "name": "string",
+            "salary": 10
+          }
+        ],
+        "generators": {
+          "body": {
+            "$[*].name": {
+              "size": 20,
+              "type": "RandomString"
+            }
+          }
+        },
+        "headers": {
+          "Content-Type": "application/json; charset=UTF-8"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 3
+                }
+              ]
+            },
+            "$[*].departmentId": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$[*].name": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$[*].salary": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            }
+          },
+          "header": {
+            "Content-Type": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "regex",
+                  "regex": "application/json(;\\s?charset=[\\w\\-]+)?"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-jvm": {
+      "version": "4.2.7"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "EmployeeCatalogue"
+  }
+}

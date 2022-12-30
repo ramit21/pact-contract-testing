@@ -22,13 +22,13 @@ import au.com.dius.pact.core.model.annotations.Pact;
 
 @SpringBootTest
 @ExtendWith(PactConsumerTestExt.class)
-@PactTestFor(providerName = "DepartmentCatalogue")
+@PactTestFor(providerName = "EmployeeCatalogue")
 public class PactConsumerTest {
 
     @Autowired
     private DepartmentController departmentController;
 
-    @Pact(consumer="EmployeeCatalogue")
+    @Pact(consumer="DepartmentCatalogue")
     public RequestResponsePact PactAllEmployees(PactDslWithProvider builder)
     {
         return builder.given("employee exists")
