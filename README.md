@@ -20,13 +20,16 @@ and this generates a 'PACT file'. It is a json file which covers all details abo
  and all tests written around it. This PACT file is then shared with the consumer app, which
  then verfies the contract. If the contract is broken, (eg. producer changed data mdoel 
  field salary to sal), the unit test case would fail. Hence the producer would know at unit testing
- stage itself that it is breaking the agreed contract.
+ stage itself that it is breaking the agreed contract. 
+ 
+ When you run the unit test case on consumer side, PACT creates a pact server as per the configurations
+  and helps in mocking the API response when the code hits the point of api call.
 
 
 ## Project Setup
 Import two maven spring boot applciations -consumer and producer, and run them.
 
-Note that both projects use JDK 11, as we are using Junit 5 in them which requires JKD to be v11.
+Note that both projects use JDK 11, to be compatible with Junit 5 and Pact v4.
 
 Make sure applications are up:
 
@@ -49,7 +52,12 @@ which is the department id being passed in api, and the total salary of all empl
 in that department. For this purpose the consumer app makes a rest call to the producer
 app to fetch all employees, and then sums up the salaries.
 
-
-
-
+Pact setup: notice the junit5 and Pact dependencies in pom.xmls. For junit5 to work,
+ you need to exclude any junit 4 dependencies. See the exclusions for spring-boot-starter-test.
+ 
+See PactConsumerTest.java on how to configure a PACt contract and a test using junit5 annotations.
+ Note how pact test cases point to mocked pact response methods, and how we set the base url 
+ in the controller as per the mock pact server being launched when the test is run.
+ 
+ 
 

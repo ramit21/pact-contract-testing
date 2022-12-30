@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class DepartmentController {
 
-    String baseUrl ="http://localhost:8100";
+    private String baseUrl ="http://localhost:8100";
 
     @GetMapping("/")
     @ResponseBody
@@ -24,7 +24,7 @@ public class DepartmentController {
 
     @GetMapping("/getTotalSalaryByDeptId/{deptId}")
     @ResponseBody
-    public Department getGreetingMessage(@PathVariable Long deptId) {
+    public Department getTotalSalaryBydept(@PathVariable Long deptId) {
         Department dept = new Department(deptId);
         dept.setTotalEmployeeSalary(fetchEmployeeSalaryByDept(deptId));
         return dept;
@@ -46,5 +46,9 @@ public class DepartmentController {
             System.out.println("Error : " + e.getMessage());
         }
         return totalSalary;
+    }
+
+    public void setBaseUrl(String baseUrl) {
+        this.baseUrl = baseUrl;
     }
 }
