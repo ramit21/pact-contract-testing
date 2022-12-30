@@ -49,7 +49,8 @@ Once test is executed, pact json contract will be created under target/pact fold
 Take this file and keep it in the producer project under src/main/java/pacts 
 (one such generated file is already present in this project, hence you may directly run the
 verification test as mentioned next).
-Now run <> as junit test case, and this would then verify the contract.
+
+Now run PactProviderTest.java as junit test case, and this would then verify the contract.
 Now try changing salary to sal in Employee dto in the producer, and run the test case again.
 This time it will show you unit test contract failure.
 
