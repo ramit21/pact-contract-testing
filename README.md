@@ -88,6 +88,17 @@ You can then use this state name in the producer test case along with @State.
  you can create state method where you would remove that particular employee
  so that contract verfication would pass.
  
+## pactflow.io
 
+In this POC, we are manually copy pasting the pact file from consumer to the provider app.
+In real world projects, different microservices are managed by different teams.
+Hence such sharing is difficult. Better solution is to use Pact flow.
+When you create a account on pactflow.io, you will get a project url and a token to connect.
+At producer side, configure pact provider plugin with the url and token details (shown as commented code).
+Then run the command 'mvn pact:publish' which would push the pact file onto pact flow project.
+
+At provider side, instead of giving path to pact folder, you give PactBroker url along 
+with token (as shown in the commented code of PactProviderTest.java. This test case 
+would then fetch the file from pact flow and validate it.
 
 
