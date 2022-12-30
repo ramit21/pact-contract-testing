@@ -37,9 +37,9 @@ public class PactConsumerTest {
                 .willRespondWith()
                 .status(200)
                 .body(PactDslJsonArray.arrayMinLike(3) //return 3 responses in the array
-                        .stringType("name")
-                        .integerType("salary", 10) //values are optional, mostly which only test the contract
-                        .integerType("departmentId")
+                        .stringType("name") //values are optional, mostly which only test the contract, when left blank, dummy values are created
+                        .integerType("salary", 10)
+                        .integerType("departmentId", 1)
                         .closeObject()).toPact();
     }
 
