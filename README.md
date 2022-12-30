@@ -44,6 +44,8 @@ Producer:
 http://localhost:8080
 http://localhost:8080/getTotalSalaryByDeptId/1
 ```
+You may now switch the applications off, and run PactConsumerTest.java as junit test.
+
 
 ## Important files and configurations
 
@@ -58,6 +60,11 @@ Pact setup: notice the junit5 and Pact dependencies in pom.xmls. For junit5 to w
 See PactConsumerTest.java on how to configure a PACt contract and a test using junit5 annotations.
  Note how pact test cases point to mocked pact response methods, and how we set the base url 
  in the controller as per the mock pact server being launched when the test is run.
+ This way, you can mock different responses from the server, like 500/404 errors as well,
+ and accoridngly write your test cases. All these tests will be captured in pact contract file, 
+ which would then be verified at the provider side.
+ 
+
  
  
 
