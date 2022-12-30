@@ -15,7 +15,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Provider("EmployeeCatalogue")
-@PactFolder("pacts")// path where pact json is kept
+@PactFolder(value = "src/main/java/pacts")// path where pact json is kept
 //@PactBroker(url="https://<my-account>.pactflow.io/",
 //authentication= @PactBrokerAuth(token="<token name"))
 
@@ -37,17 +37,17 @@ public class PactProviderTest {
     }
 
     @State(value = "employee exists", action = StateChangeAction.SETUP)
-    public void employeeExist() {
+    public void employeeExist() { //called in the project, you will see below o/p in test run logs
         System.out.println("Setup: This state is mentioned in contract, hence this method will be called");
     }
 
     @State(value = "employee abc does not exist", action = StateChangeAction.SETUP)
-    public void coursesExistTearDown() {
+    public void coursesExistTearDown() { //not called in the project, just shown for understanding purpose
         System.out.println("Setup: Delete an employee if contract does not expect it to be present");
     }
 
     @State(value = "employee abc does not exist", action = StateChangeAction.TEARDOWN)
-    public void appiumCourseExist() {
+    public void appiumCourseExist() { //not called in the project, just shown for understanding purpose
         System.out.println("Setup: Add the employee back on completion of test run");
     }
 }
