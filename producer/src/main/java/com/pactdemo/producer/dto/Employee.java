@@ -5,13 +5,13 @@ public class Employee {
     private String name;
     private long salary;
     private long departmentId;
-    private long expereince;
+    private long experience;
 
-    public Employee(String name, long salary, long departmentId, long expereince) {
+    public Employee(String name, long salary, long departmentId, long experience) {
         this.name = name;
         this.salary = salary;
         this.departmentId = departmentId;
-        this.expereince = expereince;
+        this.experience = experience;
     }
 
     public String getName() {
@@ -38,11 +38,11 @@ public class Employee {
         this.departmentId = departmentId;
     }
 
-    public long getExpereince() {
-        return expereince;
+    public long getExperience() {
+        return experience;
     }
 
-    public void setExpereince(long expereince) {
-        this.expereince = expereince;
+    public void setExperience(long experience) {
+        this.experience = experience;
     }
 }

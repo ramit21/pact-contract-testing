@@ -47,7 +47,7 @@ http://localhost:8080/getTotalSalaryByDeptId/1
 Producer app returns all employees data. Consumer app returns data of department,
 which is the department id being passed in api, and the total salary of all employees
 in that department. For this purpose the consumer app makes a rest call to the producer
-app to fetch all employees.
+app to fetch all employees, and then sums up the salaries.
 
 
 
