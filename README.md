@@ -54,6 +54,13 @@ Now run PactProviderTest.java as JUnit test case, and this would then verify the
 Now try changing salary to sal in Employee dto in the producer, and rerun the test case.
 This time it will show you unit test contract failure.
 
+If ou do not want to load entire spring context in the test case, then follow the approach of mocking the
+controller using static class at provider side as given below. 
+
+https://docs.pact.io/implementation_guides/jvm/provider/junit5spring
+
+And on consumer side, simply remove @SpringBootApplication/@Autowired annotations, and create 
+the calling client's object directly and then call the fetch method on it.
 
 ## Important files and configurations
 
